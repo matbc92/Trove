@@ -11,7 +11,7 @@ print(steed_feed_recipe)
 #16 glim
 #1 water
 #5 fertilizer
-
+##################################INCLUIR STEED FEED NOS CALCULOS, INCLUIR STEED FEED NOS CALCULOS################################################################
 def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0, target=0):
     # decomposiçao dos recrusos compostos
     if (water + shroom + glim + bulb + fertilizer) == 0:
