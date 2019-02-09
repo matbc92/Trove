@@ -14,7 +14,7 @@ print(steed_feed_recipe)
 
 def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0, target=0):
     # decomposiçao dos recrusos compostos
-    if (water + shroom + glim + bulb + fertilizer) == 0
+    if (water + shroom + glim + bulb + fertilizer) == 0:
         while True:
             try:
                 bulb = int(input('How many sunlight bulbs do you have?'))
@@ -37,9 +37,9 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
     total_shroom = shroom + shroom_from_fert + shroom_from_water
     total_glim = glim + glim_from_fert + glim_from_water
     #
-    weighted_atomic_glim =total_glim/required_glim
-    weighted_atomic_bulb = bulb/required_bulb
-    weighted_atomic_shroom =(total_shroom/required_shroom)
+    weighted_atomic_glim =total_glim/glim_per_sporeling
+    weighted_atomic_bulb = bulb/bulb_per_sporeling
+    weighted_atomic_shroom =(total_shroom/shroom_per_sporeling)
     most = max(weighted_atomic_bulb, weighted_atomic_shroom, weighted_atomic_glim)
 
 
@@ -58,6 +58,7 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
             sporeling=sporelings_final_ammount, fbulb=lacking_bulb,fglim=lacking_glim, fshroom=lacking_shroom, fwater=water_to_craft))
         pass
     else:
+        ################################################################MECHER NO MOST, PRA CONSIDERAR MELHOR O FERTILIZER###############################################
         if most == weighted_atomic_glim:
             sporelings_final_ammount = total_glim//glim_per_sporeling
             bulb_target = sporelings_final_ammount*bulb_per_sporeling
@@ -70,7 +71,7 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
             You lack {fbulb} sunlight bulbs, {fshroom} mushrooms. You also need to craft {fwater} sponges'''.format(sporeling= sporelings_final_ammount, fbulb= lacking_bulb, fshroom=lacking_shroom,fwater=water_to_craft ))
 
         elif most == weighted_atomic_bulb:
-            sporelings_final_ammount = total_bulb // bulb_per_sporeling
+            sporelings_final_ammount = bulb // bulb_per_sporeling
             glim_target = sporelings_final_ammount * glim_per_sporeling
             shroom_target = sporelings_final_ammount * shroom_per_sporeling
             water_target = (sporelings_final_ammount * water_per_sporeling) - fertilizer
@@ -87,12 +88,12 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
             bulb_target = sporelings_final_ammount * bulb_per_sporeling
             water_target = (sporelings_final_ammount * water_per_sporeling) - fertilizer
             lacking_glim = glim_target - glim
-            lacking_bulb = bulb_target - total_bulb
+            lacking_bulb = bulb_target - bulb
             water_to_craft = water_target - water
             print('''You have enough mushrooms to make {sporeling} sporelings.
                             You lack {fglim} glim, {fbulb} sunlight bulbs. You also need to craft {fwater} sponges'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_glim, fshroom=lacking_shroom, fwater=water_to_craft))
-
+calculate_sporeling_amounts()
 
 
 
