@@ -6,13 +6,14 @@ steed_feed_recipe = 'steed feed seed recipe = (5 * fertilizer + 35 * bulb)'
 steed_feed_recipe = steed_feed_recipe.replace('fertilizer' ,'((3 * shroom 13 * glim 1 * water) / 5)').replace('water', '(2 * shroom + 3 * glim)')
 print(steed_feed_recipe)
 '(5 * ((3 * shroom + 13 * glim +(2 * shroom + 3 * glim) / 5) + 35 * bulb)'''
+# drafts of the ammounts of things I was going to use, mostly a reference card
 #5 shrooms = one recipe of steed feed(10 steed feed seeds)
 #35 bulb = one recipe of teed feed(10 steed feed)
 #16 glim
 #1 water
 #5 fertilizer
 def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,sfeed=0,ichor = 0, target=0):
-    # decomposiçao dos recrusos compostos
+    # If no ammounts are supllied to the function, the function will ask for them in the form of inputs
     if (water + shroom + glim + bulb + fertilizer) == 0:
         while True:
             try:
@@ -26,6 +27,7 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
                 break
             except:
                 print('Input only numbers please')
+    # Decomposition of composite resources
     fertilizer_from_sfeed = sfeed * 5/10
     total_fert = fertilizer + fertilizer_from_sfeed
     water_from_fert = total_fert//5
@@ -41,12 +43,12 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
     fertilizer_per_sporeling = 50
     sfeed_per_sporeling = 100
     ichor_per_sporeling = 50
-    # Soma total dos recursos atomicos
+    # Sum of the actual ammount of the resources with the quantity resluting of the decompostion
     total_shroom = shroom + shroom_from_fert + shroom_from_water
     total_glim = glim + glim_from_fert + glim_from_water
     total_bulb = bulb + bulb_from_sfeed
     total_water = water_from_fert + water
-    #
+    # Weighting of the amounts based on the quantity required for the complete recipe
     weighted_glim = glim/glim_per_sporeling
     weighted_bulb = bulb/bulb_per_sporeling
     weighted_shroom = shroom/shroom_per_sporeling
@@ -57,6 +59,13 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
     most = max(weighted_bulb, weighted_shroom, weighted_glim, weighted_fertilizer,weighted_sfeed,weighted_water,weighted_ichor)
 
 
+    # Optional mode of the function, if the target parameter is set to anything,
+    # the function will not calculate how much resources you will need to exhaust
+    # your most abundant one, instead it will calculate how much resources will
+    # will be required to produce the ammout of steed feed equal to the number
+    # supllied on the target parameter.
+    # If all the parameters refering to the resources are empty they will still
+    # be asked as inputs.
     if target != 0:
         sporelings_final_ammount = target
         glim_target = sporelings_final_ammount*glim_per_sporeling
@@ -74,7 +83,10 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
         print('''You want to make {sporeling} sporelings.
 You to do that you will need to gather {fbulb} additional sunlight bulbs, {fshroom} additional mushrooms, {fglim} additional glim and {fichor} aditional sticky ichors.
 You also need to craft {fsfeed} steed feed seeds, for which will require {ffertilizer} to be craft, which will also require {fwater} aditional sponges to be craft'''.format(sporeling=sporelings_final_ammount, fbulb=lacking_bulb,fglim=lacking_glim,\
-                                                                                                                 fshroom=lacking_shroom, fwater=water_to_craft,fsfeed = sfeed_to_craft,ffertilizer =fertilizer_to_craft, fichor = lacking_ichor))
+fshroom=lacking_shroom, fwater=water_to_craft,fsfeed = sfeed_to_craft,ffertilizer =fertilizer_to_craft, fichor = lacking_ichor))
+# After the weighting is done and the (relative to the recipe requirements)
+# most abundant resource is established the ammount required of the remaining
+# ones will be calculated and printed
     else:
         if most == weighted_glim:
             sporelings_final_ammount = total_glim//glim_per_sporeling
