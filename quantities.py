@@ -162,7 +162,7 @@ which will also require {fwater} aditional sponges to be craft'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
         elif most == weighted_fertilizer:
-            sporelings_final_ammount = total_fert // shroom_per_sporeling
+            sporelings_final_ammount = total_fert // fert_per_sporeling
             glim_target = sporelings_final_ammount * glim_per_sporeling
             bulb_target = sporelings_final_ammount * bulb_per_sporeling
             shroom_target = sporelings_final_ammount * shroom_per_sporeling
@@ -184,7 +184,7 @@ You also need to craft {fsfeed} steed feed seeds,'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
         elif most == weighted_sfeed:
-            sporelings_final_ammount = total_shroom // shroom_per_sporeling
+            sporelings_final_ammount = total_sfeed:// sfeed_per_sporeling
             glim_target = sporelings_final_ammount * glim_per_sporeling
             bulb_target = sporelings_final_ammount * bulb_per_sporeling
             shroom_target = sporelings_final_ammount * shroom_per_sporeling
@@ -205,7 +205,7 @@ You lack {fshroom} mushrooms and {fichor} sticky ichors.'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
         elif most == weighted_water:
-            sporelings_final_ammount = total_shroom // shroom_per_sporeling
+            sporelings_final_ammount = total_water // water_per_sporeling
             glim_target = sporelings_final_ammount * glim_per_sporeling
             bulb_target = sporelings_final_ammount * bulb_per_sporeling
             shroom_target = sporelings_final_ammount * shroom_per_sporeling
@@ -228,7 +228,7 @@ for which will require {ffertilizer} to be craft,'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
         elif most == weighted_ichor:
-            sporelings_final_ammount = ichor// shroom_per_sporeling
+            sporelings_final_ammount = ichor// ichor_per_sporeling
             glim_target = sporelings_final_ammount * glim_per_sporeling
             bulb_target = sporelings_final_ammount * bulb_per_sporeling
             shroom_target = sporelings_final_ammount * shroom_per_sporeling
