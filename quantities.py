@@ -184,7 +184,7 @@ You also need to craft {fsfeed} steed feed seeds,'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
         elif most == weighted_sfeed:
-            sporelings_final_ammount = total_sfeed:// sfeed_per_sporeling
+            sporelings_final_ammount = total_sfeed// sfeed_per_sporeling
             glim_target = sporelings_final_ammount * glim_per_sporeling
             bulb_target = sporelings_final_ammount * bulb_per_sporeling
             shroom_target = sporelings_final_ammount * shroom_per_sporeling
