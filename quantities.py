@@ -68,21 +68,24 @@ def calculate_sporeling_amounts(bulb=0, shroom=0, glim=0, water=0, fertilizer=0,
     # be asked as inputs.
     if target != 0:
         sporelings_final_ammount = target
-        glim_target = sporelings_final_ammount*glim_per_sporeling
+        glim_target = sporelings_final_ammount * glim_per_sporeling
         bulb_target = sporelings_final_ammount * bulb_per_sporeling
         shroom_target = sporelings_final_ammount * shroom_per_sporeling
         water_target = sporelings_final_ammount * water_per_sporeling
         fertilizer_target = sporelings_final_ammount * fertilizer_per_sporeling
         sfeed_target = sporelings_final_ammount * sfeed_per_sporeling
+        ichor_target = sporelings_final_ammount * ichor_per_sporeling
+        lacking_ichor = ichor_target - ichor
         lacking_bulb = bulb_target - total_bulb
         lacking_shroom = shroom_target - total_shroom
         lacking_glim = glim_target - total_glim
         water_to_craft = water_target - total_water
         fertilizer_to_craft = fertilizer_target - fertilizer
         sfeed_to_craft = sfeed_target - sfeed
+
         print('''You want to make {sporeling} sporelings.
 You to do that you will need to gather {fbulb} additional sunlight bulbs, {fshroom} additional mushrooms, {fglim} additional glim and {fichor} aditional sticky ichors.
-You also need to craft {fsfeed} steed feed seeds, for which will require {ffertilizer} to be craft, which will also require {fwater} aditional sponges to be craft'''.format(sporeling=sporelings_final_ammount, fbulb=lacking_bulb,fglim=lacking_glim,\
+You also need to craft {fsfeed} steed feed seeds, for which will require {ffertilizer} fertilizers to be craft, which will also require {fwater} aditional sponges to be craft'''.format(sporeling=sporelings_final_ammount, fbulb=lacking_bulb,fglim=lacking_glim,\
 fshroom=lacking_shroom, fwater=water_to_craft,fsfeed = sfeed_to_craft,ffertilizer =fertilizer_to_craft, fichor = lacking_ichor))
 # After the weighting is done and the (relative to the recipe requirements)
 # most abundant resource is established the ammount required of the remaining
@@ -107,7 +110,7 @@ fshroom=lacking_shroom, fwater=water_to_craft,fsfeed = sfeed_to_craft,ffertilize
             print('''You have enough glim to make {sporeling} sporelings.
 You lack {fbulb} sunlight bulbs, {fshroom} mushrooms and {fichor} sticky ichors.
 You also need to craft {fsfeed} steed feed seeds,
-for which will require {ffertilizer} to be craft,
+for which will require {ffertilizer} fertilizers to be craft,
 which will also require {fwater} aditional sponges to be craft'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft, fichor = lacking_ichor))
@@ -131,7 +134,7 @@ which will also require {fwater} aditional sponges to be craft'''.format(
             print('''You have enough sunlight bulbs to make {sporeling} sporelings.
 You lack {fglim} gilm, {fshroom} mushrooms and {fichor} sticky ichors.
 You also need to craft {fsfeed} steed feed seeds,
-for which will require {ffertilizer} to be craft,
+for which will require {ffertilizer} fertilizers to be craft,
 which will also require {fwater} aditional sponges to be craft'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
@@ -157,12 +160,12 @@ which will also require {fwater} aditional sponges to be craft'''.format(
             print('''You have enough mushrooms to make {sporeling} sporelings.
 You lack {fglim} glim, {fbulb} sunlight bulbs and {fichor} sticky ichors.
 You also need to craft {fsfeed} steed feed seeds,
-for which will require {ffertilizer} to be craft,
+for which will require {ffertilizer} fertilizers to be craft,
 which will also require {fwater} aditional sponges to be craft'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
         elif most == weighted_fertilizer:
-            sporelings_final_ammount = total_fert // fert_per_sporeling
+            sporelings_final_ammount = total_fert // fertilizer_per_sporeling
             glim_target = sporelings_final_ammount * glim_per_sporeling
             bulb_target = sporelings_final_ammount * bulb_per_sporeling
             shroom_target = sporelings_final_ammount * shroom_per_sporeling
@@ -224,7 +227,7 @@ You lack {fshroom} mushrooms and {fichor} sticky ichors.'''.format(
             print('''You have enough water or sponges to make {sporeling} sporelings.
 You lack {fglim} glim, {fbulb} sunlight bulbs,{fichor} sticky ichors and {fshroom} mushrooms.
 You also need to craft {fsfeed} steed feed seeds,
-for which will require {ffertilizer} to be craft,'''.format(
+for which will require {ffertilizer} fertilizers to be craft,'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
         elif most == weighted_ichor:
@@ -247,14 +250,14 @@ for which will require {ffertilizer} to be craft,'''.format(
             print('''You have enough sticky ichor to make {sporeling} sporelings.
 You lack {fglim} glim, {fbulb} sunlight bulbs and {fshroom} mushrooms.
 You also need to craft {fsfeed} steed feed seeds,
-for which will require {ffertilizer} to be craft,
+for which will require {ffertilizer} fertilizers to be craft,
 which will also require {fwater} aditional sponges to be craft'''.format(
                 sporeling=sporelings_final_ammount, fbulb=lacking_bulb, fglim=lacking_glim, \
                 fshroom=lacking_shroom, fwater=water_to_craft, fsfeed=sfeed_to_craft, ffertilizer=fertilizer_to_craft,fichor = lacking_ichor))
 
 
 
-calculate_sporeling_amounts()
+calculate_sporeling_amounts(target=200, bulb = 300)
 
 
 
